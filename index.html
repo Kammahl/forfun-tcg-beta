@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ForFun TCG — Beta</title>
+<meta name="description" content="ForFun TCG: jogo de cartas estratégico com cinco elementos. Baixe o beta para Windows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Metamorphous&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #120d17;
+    --fundo-2: #1c1424;
+    --painel: #221829;
+    --ouro: #e8be60;
+    --ouro-escuro: #8a6a2c;
+    --texto: #f4ecdc;
+    --apagado: #b3a8c4;
+    --luz: #d9b45a; --chama: #c8452c; --agua: #2f6fb8; --natureza: #3f8a3a; --sombra: #7a4fa8;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: radial-gradient(1200px 600px at 50% -10%, #3a2550 0%, transparent 60%), var(--fundo);
+    color: var(--texto);
+    font-family: Inter, system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--ouro); }
+  .conteudo { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+  header.topo { text-align: center; padding: 72px 0 40px; }
+  .selo { display: inline-block; font-family: Cinzel, serif; font-size: 13px; letter-spacing: .18em; color: var(--ouro);
+          border: 1px solid var(--ouro-escuro); border-radius: 999px; padding: 4px 14px; margin-bottom: 18px; }
+  h1 { font-family: Metamorphous, serif; font-weight: 400; font-size: clamp(48px, 9vw, 96px); margin: 0;
+       color: var(--ouro); text-shadow: 0 4px 0 rgba(0,0,0,.6); line-height: 1.05; }
+  .frase { font-size: clamp(17px, 2.4vw, 21px); color: var(--apagado); max-width: 640px; margin: 18px auto 0; }
+  .elementos { display: flex; justify-content: center; gap: 10px; margin: 26px 0 0; flex-wrap: wrap; }
+  .elementos span { width: 14px; height: 14px; border-radius: 50%; display: inline-block; box-shadow: 0 0 12px currentColor; }
+
+  .baixar { margin: 36px auto 0; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .botao {
+    display: inline-flex; align-items: center; gap: 12px; text-decoration: none;
+    font-family: Cinzel, serif; font-weight: 700; font-size: 20px; letter-spacing: .04em;
+    color: #1a1208; background: linear-gradient(180deg, #f6d27e, #d9a441);
+    padding: 16px 34px; border-radius: 12px; border: 2px solid #ffe7a6;
+    box-shadow: 0 8px 28px rgba(232,190,96,.25), inset 0 -3px 0 rgba(0,0,0,.18);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .botao:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(232,190,96,.35), inset 0 -3px 0 rgba(0,0,0,.18); }
+  .botao svg { width: 22px; height: 22px; }
+  .info-baixar { font-size: 14px; color: var(--apagado); }
+
+  section { padding: 44px 0; }
+  h2 { font-family: Cinzel, serif; font-size: clamp(24px, 3.4vw, 32px); color: var(--ouro); margin: 0 0 22px; text-align: center; }
+
+  .galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .galeria figure { margin: 0; background: var(--painel); border: 1px solid #3a2c47; border-radius: 12px; overflow: hidden; }
+  .galeria img { display: block; width: 100%; height: auto; }
+  .galeria figcaption { padding: 10px 14px; font-size: 14px; color: var(--apagado); }
+
+  .recursos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .recurso { background: var(--painel); border: 1px solid #3a2c47; border-radius: 12px; padding: 18px 18px 16px; }
+  .recurso h3 { font-family: Cinzel, serif; font-size: 17px; margin: 0 0 6px; color: var(--texto); }
+  .recurso p { margin: 0; color: var(--apagado); font-size: 15px; }
+
+  .passos { background: var(--fundo-2); border: 1px solid #3a2c47; border-radius: 14px; padding: 22px 26px; max-width: 760px; margin: 0 auto; }
+  .passos ol { margin: 0; padding-left: 22px; }
+  .passos li { margin: 8px 0; }
+  .aviso { margin-top: 14px; font-size: 14px; color: var(--apagado); border-left: 3px solid var(--ouro-escuro); padding-left: 12px; }
+  kbd { font-family: Inter, sans-serif; font-size: 13px; background: #2c2036; border: 1px solid #4a3a5a; border-radius: 5px; padding: 1px 6px; }
+
+  footer { text-align: center; color: var(--apagado); font-size: 14px; padding: 36px 0 48px; border-top: 1px solid #2c2036; margin-top: 24px; }
+
+  @media (max-width: 760px) {
+    .galeria, .recursos { grid-template-columns: 1fr; }
+    header.topo { padding-top: 48px; }
+  }
+</style>
+</head>
+<body>
+  <div class="conteudo">
+    <header class="topo">
+      <div class="selo">VERSÃO BETA</div>
+      <h1>ForFun TCG</h1>
+      <p class="frase">Um jogo de cartas estratégico em que cinco elementos disputam a mesa. Monte o seu deck, carregue a Essência e vença pelo desgaste, pela pressa ou pelo controle.</p>
+      <div class="elementos" aria-label="Elementos">
+        <span style="color:var(--luz);background:var(--luz)" title="Luz"></span>
+        <span style="color:var(--chama);background:var(--chama)" title="Chama"></span>
+        <span style="color:var(--agua);background:var(--agua)" title="Água"></span>
+        <span style="color:var(--natureza);background:var(--natureza)" title="Natureza"></span>
+        <span style="color:var(--sombra);background:var(--sombra)" title="Sombra"></span>
+      </div>
+      <div class="baixar">
+        <a class="botao" href="https://github.com/Kammahl/forfun-tcg-beta/releases/latest/download/ForFunTCG-beta-windows.zip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Baixar o beta
+        </a>
+        <div class="info-baixar">Windows 10 ou 11 (64 bits) · cerca de 185 MB · <a href="https://github.com/Kammahl/forfun-tcg-beta/releases">todas as versões</a></div>
+      </div>
+    </header>
+
+    <section id="imagens">
+      <h2>Na mesa</h2>
+      <div class="galeria">
+        <figure><img src="img/partida.jpg" alt="Partida em andamento, com uma mágica no centro da mesa mirando uma criatura" loading="lazy"><figcaption>Toda carta jogada para no centro e espera resposta antes de resolver.</figcaption></figure>
+        <figure><img src="img/decks.jpg" alt="Biblioteca de decks com livros na estante" loading="lazy"><figcaption>Biblioteca de decks: monte, edite, importe e exporte os seus.</figcaption></figure>
+        <figure><img src="img/fichas.jpg" alt="Fichas de criatura no campo: Soldado, Lobo, Aranha, Zumbi e Anjo" loading="lazy"><figcaption>Fichas, fases no centro e o tempo da jogada em volta do círculo.</figcaption></figure>
+        <figure><img src="img/menu.jpg" alt="Menu principal do jogo" loading="lazy"><figcaption>Menu principal.</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="recursos">
+      <h2>O que já dá para jogar</h2>
+      <div class="recursos">
+        <div class="recurso"><h3>320 cartas</h3><p>A Coleção Núcleo: cinco elementos, cartas de duas cores e incolores de metal.</p></div>
+        <div class="recurso"><h3>Contra a IA</h3><p>Partidas 1 contra 1 e 2 contra 2, com uma IA que aprende com o seu jeito de jogar.</p></div>
+        <div class="recurso"><h3>Com amigos</h3><p>Online por IP: 1 contra 1, ou 2 contra 2 com amigos e IA nos lugares vazios.</p></div>
+        <div class="recurso"><h3>Seus decks</h3><p>Estante de decks com editor por arrasto, zoom nas cartas e troca por texto.</p></div>
+        <div class="recurso"><h3>Pilha e respostas</h3><p>Responda às jogadas do oponente com setas mostrando cada alvo.</p></div>
+        <div class="recurso"><h3>Glossário</h3><p>Todos os termos do jogo explicados dentro do próprio jogo.</p></div>
+      </div>
+    </section>
+
+    <section id="instalar">
+      <h2>Como instalar</h2>
+      <div class="passos">
+        <ol>
+          <li>Clique em <strong>Baixar o beta</strong> e salve o arquivo <code>ForFunTCG-beta-windows.zip</code>.</li>
+          <li>Clique com o botão direito no arquivo e escolha <strong>Extrair tudo</strong>.</li>
+          <li>Abra a pasta e dê dois cliques em <strong>ForFunTCG.exe</strong>. Não precisa instalar nada.</li>
+        </ol>
+        <p class="aviso">O Windows pode mostrar "O Windows protegeu o computador", porque o jogo ainda não tem assinatura digital. Clique em <strong>Mais informações</strong> e depois em <strong>Executar assim mesmo</strong>.</p>
+        <p class="aviso">Para jogar online, quem hospeda precisa liberar a porta <kbd>24680</kbd> (UDP) no roteador, ou os dois usam uma rede virtual como Radmin VPN ou ZeroTier.</p>
+      </div>
+    </section>
+
+    <section id="beta">
+      <h2>É um beta</h2>
+      <p style="text-align:center;color:var(--apagado);max-width:680px;margin:0 auto">As artes das cartas ainda estão sendo feitas, o Modo História vem depois e o equilíbrio das cartas ainda muda. Encontrou um problema ou tem uma ideia? Conte para quem te mandou este link.</p>
+    </section>
+  </div>
+  <footer>ForFun TCG · beta · feito com Godot</footer>
+</body>
+</html>
